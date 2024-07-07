@@ -24,13 +24,3 @@ class MovieCollectionViewCell: UICollectionViewCell {
         print("Favorite")
     }
 }
-
-
-struct Movie {
-    var id: Int
-    var name: String
-    var rate: String
-    var isFavorite: Bool
-}
-
-typealias Movies = [Movie]
