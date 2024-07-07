@@ -16,6 +16,9 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var describtion: UILabel!
     @IBOutlet weak var rate: UILabel!
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var averageCount: UILabel!
+    @IBOutlet weak var language: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
     
     private var cancellables = Set<AnyCancellable>()
 
@@ -43,6 +46,12 @@ class MovieDetailsViewController: UIViewController {
         describtion.text = model.overView
         rate.text = model.rate
         favoriteButton.tintColor = model.isFavorite ? .yellow : .white
+        averageCount.text = model.voteAverage
+        language.text = model.language
+        releaseDate.text = model.date
+        Task {
+            await poster.loadImage(from: model.poster)
+        }
     }
     
     func bindGetMoviesListViewModel() {

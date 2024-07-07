@@ -46,6 +46,7 @@
 		040E60CC2C3AC498002A2AF3 /* MovieDetailsRepoImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E60CB2C3AC498002A2AF3 /* MovieDetailsRepoImplementation.swift */; };
 		040E60CF2C3AC539002A2AF3 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E60CE2C3AC539002A2AF3 /* Container.swift */; };
 		040E60D12C3B22B7002A2AF3 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E60D02C3B22B7002A2AF3 /* UserDefaultsManager.swift */; };
+		040E60D32C3B2BE5002A2AF3 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040E60D22C3B2BE5002A2AF3 /* UIView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		040E60CB2C3AC498002A2AF3 /* MovieDetailsRepoImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsRepoImplementation.swift; sourceTree = "<group>"; };
 		040E60CE2C3AC539002A2AF3 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		040E60D02C3B22B7002A2AF3 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		040E60D22C3B2BE5002A2AF3 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			children = (
 				040E60752C3A975A002A2AF3 /* UICollectionView+.swift */,
 				040E60902C3AA53A002A2AF3 /* UIImageView+.swift */,
+				040E60D22C3B2BE5002A2AF3 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				040E60C52C3AC0CD002A2AF3 /* Constants.swift in Sources */,
 				040E60AB2C3AAFB4002A2AF3 /* MovieDetailsRepoProtocol.swift in Sources */,
 				040E60912C3AA53A002A2AF3 /* UIImageView+.swift in Sources */,
+				040E60D32C3B2BE5002A2AF3 /* UIView+.swift in Sources */,
 				040E60C22C3ABFF8002A2AF3 /* URLRequestConvertible.swift in Sources */,
 				040E604B2C3A8261002A2AF3 /* AppDelegate.swift in Sources */,
 				040E608F2C3AA16E002A2AF3 /* MovieDetailsRouter.swift in Sources */,

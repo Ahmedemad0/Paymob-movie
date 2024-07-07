@@ -22,11 +22,11 @@ class MovieDetailsUseCases: MovieDetailsUseCasesProtcol {
             return .init(
                 id: movie.id,
                 name: movie.originalTitle,
-                poster: Constants.imageBase + (movie.posterPath ?? (movie.backdropPath ?? "")),
+                poster: Constants.imageBase + movie.posterPath,
                 rate: "\(movie.popularity)",
                 date: movie.releaseDate,
                 overView: movie.overview,
-                voteAverage: "\(movie.voteAverage)",
+                voteAverage: "(\(movie.voteAverage))",
                 language: movie.originalLanguage,
                 isFavorite: false
             )
