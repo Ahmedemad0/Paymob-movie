@@ -13,7 +13,7 @@ protocol MoviesListRouterProtocol {
 }
 
 enum MoviesListRouterDestinations {
-    case movieDetails
+    case movieDetails(Int, Bool)
 }
 
 class MoviesListRouter : MoviesListRouterProtocol {
@@ -31,13 +31,15 @@ class MoviesListRouter : MoviesListRouterProtocol {
     
     func navigateTo(destination: MoviesListRouterDestinations, fromViewController viewController: MoviesListViewController) {
         switch destination {
-        case .movieDetails:
-            navigateToMovieDetailsScreen(fromView: viewController)
+        case .movieDetails(let id, let isFavorite):
+            navigateToMovieDetailsScreen(fromView: viewController, id: id, isFavorite: isFavorite)
         }
     }
     
-    private func navigateToMovieDetailsScreen(fromView viewController: MoviesListViewController){
-        let destinationViewController = MovieDetailsRouter.createScene()
+    private func navigateToMovieDetailsScreen(fromView viewController: MoviesListViewController, id: Int, isFavorite: Bool){
+        let viewModel = MovieDetailsViewModel(id: id, isFavorite: isFavorite)
+        let destinationViewController = MovieDetailsRouter.createScene(viewModel: viewModel)
+        viewController.viewModel.bindToFavoriteStatusChanges(from: viewModel)
         viewController.navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }

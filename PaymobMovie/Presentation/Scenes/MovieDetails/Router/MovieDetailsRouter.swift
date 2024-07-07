@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MovieDetailsRouterProtocol {
-    static func createScene() -> UIViewController
+    static func createScene(viewModel: MovieDetailsViewModel) -> UIViewController
     func navigateTo(destination: MovieDetailsRouterDestinations, fromViewController viewController: MovieDetailsViewController)
 }
 
@@ -18,9 +18,9 @@ enum MovieDetailsRouterDestinations {
 
 class MovieDetailsRouter : MovieDetailsRouterProtocol {
    
-    static func createScene() -> UIViewController {
+    static func createScene(viewModel: MovieDetailsViewModel) -> UIViewController {
         let router = MovieDetailsRouter()
-        let viewController = MovieDetailsViewController(router: router)
+        let viewController = MovieDetailsViewController(router: router, viewModel: viewModel)
         return viewController
     }
     

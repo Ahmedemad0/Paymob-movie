@@ -19,7 +19,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         rate.text = model.rate
         favoriteButton.tintColor = model.isFavorite ? .yellow : .white
         Task {
-            await image.loadImage(from: model.image)
+            await image.loadImage(from: model.poster)
         }
     }
 
