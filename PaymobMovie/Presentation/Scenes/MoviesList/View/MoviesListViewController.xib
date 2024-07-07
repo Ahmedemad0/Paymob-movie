@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,10 +18,9 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="K7D-aa-q2f">
-                    <rect key="frame" x="0.0" y="119" width="393" height="733"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EMr-AZ-TF7">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="K7D-aa-q2f">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="EMr-AZ-TF7">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -31,22 +29,14 @@
                 </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="K7D-aa-q2f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BQY-iv-C04"/>
-                <constraint firstItem="K7D-aa-q2f" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="ECd-CH-yTb"/>
+                <constraint firstItem="K7D-aa-q2f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="EPh-Tn-tTd"/>
                 <constraint firstItem="K7D-aa-q2f" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="M1x-tr-8vz"/>
-                <constraint firstAttribute="bottom" secondItem="K7D-aa-q2f" secondAttribute="bottom" id="zVN-N7-OgC"/>
+                <constraint firstAttribute="bottom" secondItem="K7D-aa-q2f" secondAttribute="bottom" id="bou-Gf-5qi"/>
             </constraints>
             <point key="canvasLocation" x="139.69465648854961" y="19.718309859154932"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="tertiaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

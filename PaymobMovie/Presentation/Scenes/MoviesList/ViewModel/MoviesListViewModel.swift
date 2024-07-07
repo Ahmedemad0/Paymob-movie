@@ -56,6 +56,13 @@ class MoviesListViewModel {
         }
     }
     
+    func updateFavoriteStatus(for movie: Movie) {
+        if let index = movies.firstIndex(where: { $0.id == movie.id }) {
+            movies[index].isFavorite = movie.isFavorite
+            movie.isFavorite ? saveIdInFavorites(movie.id) : removeIDFromFavorites(movie.id)
+        }
+    }
+    
     func didSelectMovie(_ index: Int) {
         movieSelectedSubject.send(index)
     }
@@ -65,7 +72,6 @@ class MoviesListViewModel {
             .sink { [weak self] updatedMovie in
                 guard let self = self else { return }
                 self.updateFavoriteStatus(for: updatedMovie)
-                
             }
             .store(in: &cancellables)
     }

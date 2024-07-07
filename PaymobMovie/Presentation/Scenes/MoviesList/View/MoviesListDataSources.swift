@@ -22,7 +22,12 @@ class MoviesListCollectionViewDataSources: NSObject, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(indexPath: indexPath) as MovieCollectionViewCell
-        cell.configureCell(viewModel.movies[indexPath.row])
+        cell.configureCell(viewModel.movies[indexPath.row]) { [weak self] in
+            guard let self else { return }
+            var updatedMovie = self.viewModel.movies[indexPath.row]
+            updatedMovie.isFavorite.toggle()
+            self.viewModel.updateFavoriteStatus(for: updatedMovie)
+        }
         return cell
     }
     
@@ -34,8 +39,8 @@ class MoviesListCollectionViewDataSources: NSObject, UICollectionViewDelegate, U
 extension MoviesListCollectionViewDataSources: UICollectionViewDelegateFlowLayout {
     // Defines the size for each item in the collection view.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.size.width / 2 - 20
-        let height =  width * 1.25
+        let width = collectionView.frame.size.width
+        let height = collectionView.frame.size.height
         return .init(width: width , height: height)
     }
 }

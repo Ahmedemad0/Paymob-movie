@@ -12,6 +12,7 @@ class MoviesListViewController: UIViewController {
     
     // collection view to display the movies.
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     let router: MoviesListRouterProtocol
     // The view model that holds UI logic.
