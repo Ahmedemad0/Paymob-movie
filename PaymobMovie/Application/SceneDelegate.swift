@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: scene)
         self.window = window
-        
+        setupDependencyContainer()
         let viewModel = MoviesListViewModel()
         let router = MoviesListRouter()
         let viewController = MoviesListViewController(viewModel: viewModel, router: router)
@@ -58,3 +58,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+extension SceneDelegate {
+    func setupDependencyContainer() {
+        Container.register(type: NetworkDispatcher.self, {
+            return DefaultNetworkDispatcher()
+        })
+        
+        Container.register(type: MoviesListRepoProtocol.self, {
+            return MoviesListRepositoryImplementation()
+        })
+        
+        Container.register(type: MovieDetailsRepoProtocol.self, {
+            return MovieDetailsRepoImplementation()
+        })
+        
+        Container.register(type: MovieListUseCasesProtocol.self, {
+            return MovieListUseCases()
+        })
+        
+        Container.register(type: MovieDetailsUseCasesProtcol.self, {
+            return MovieDetailsUseCases()
+        })
+        
+    }
+}

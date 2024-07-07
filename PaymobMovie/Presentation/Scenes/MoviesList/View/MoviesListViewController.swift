@@ -42,6 +42,7 @@ class MoviesListViewController: UIViewController {
         self.dataSources = .init(viewModel)
         setCollectionViewDelegtes()
         subscribeSelectIndex()
+        bindGetMoviesListViewModel()
     }
     
     // Register the custom cell with the collection view.
@@ -54,6 +55,15 @@ class MoviesListViewController: UIViewController {
         collectionView.delegate = dataSources
     }
     
+    func bindGetMoviesListViewModel() {
+        viewModel.$movies
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] _ in
+                    guard let self else { return }
+                    self.collectionView.reloadData()
+                }
+                .store(in: &cancellables)
+    }
     
     func subscribeSelectIndex() {
         viewModel.movieSelectedPublisher
@@ -65,7 +75,8 @@ class MoviesListViewController: UIViewController {
     }
     
     func navigateIntoDetails(at index: Int) {
-        router.navigateTo(destination: .movieDetails, fromViewController: self)
+        let movie = viewModel.movies[index]
+        router.navigateTo(destination: .movieDetails(movie.id, movie.isFavorite), fromViewController: self)
     }
 }
 
