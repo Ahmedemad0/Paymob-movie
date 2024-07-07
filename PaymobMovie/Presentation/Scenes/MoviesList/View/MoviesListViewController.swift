@@ -6,21 +6,27 @@
 //
 
 import UIKit
+import Combine
 
 class MoviesListViewController: UIViewController {
     
     // collection view to display the movies.
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let router: MoviesListRouterProtocol
     // The view model that holds UI logic.
     let viewModel: MoviesListViewModel
     // custom data source and delegate for the collection view.
     private var dataSources: MoviesListCollectionViewDataSources?
 
+    private var cancellables: Set<AnyCancellable> = []
+
+    
     // Initializer with a default view model
-    init(viewModel: MoviesListViewModel = MoviesListViewModel()) {
+    init(viewModel: MoviesListViewModel = MoviesListViewModel(), router: MoviesListRouterProtocol) {
         self.viewModel = viewModel
-        super.init(nibName: "MoviesListViewController", bundle: nil)
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +41,7 @@ class MoviesListViewController: UIViewController {
         // Initialize the data source with the view model.
         self.dataSources = .init(viewModel)
         setCollectionViewDelegtes()
+        subscribeSelectIndex()
     }
     
     // Register the custom cell with the collection view.
@@ -47,6 +54,19 @@ class MoviesListViewController: UIViewController {
         collectionView.delegate = dataSources
     }
     
+    
+    func subscribeSelectIndex() {
+        viewModel.movieSelectedPublisher
+        .sink { [weak self] index in
+            guard let self else { return }
+            self.navigateIntoDetails(at: index)
+        }
+        .store(in: &cancellables)
+    }
+    
+    func navigateIntoDetails(at index: Int) {
+        router.navigateTo(destination: .movieDetails, fromViewController: self)
+    }
 }
 
 
