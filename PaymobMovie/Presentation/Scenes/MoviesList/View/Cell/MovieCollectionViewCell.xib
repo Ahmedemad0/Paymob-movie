@@ -103,6 +103,7 @@
             <size key="customSize" width="163" height="203"/>
             <connections>
                 <outlet property="favoriteButton" destination="jH8-WG-Kpc" id="muQ-yz-rIx"/>
+                <outlet property="image" destination="uny-sD-uxy" id="PRB-L2-Hr9"/>
                 <outlet property="name" destination="SYQ-nI-kBs" id="iNk-rt-DTh"/>
                 <outlet property="rate" destination="YpP-Wj-2ot" id="0AR-yv-XNx"/>
             </connections>

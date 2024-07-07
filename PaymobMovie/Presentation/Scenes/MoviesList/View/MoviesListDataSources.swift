@@ -25,6 +25,10 @@ class MoviesListCollectionViewDataSources: NSObject, UICollectionViewDelegate, U
         cell.configureCell(viewModel.movies[indexPath.row])
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelectMovie(indexPath.row)
+    }
 }
 
 extension MoviesListCollectionViewDataSources: UICollectionViewDelegateFlowLayout {
